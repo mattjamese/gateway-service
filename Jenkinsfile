@@ -3,7 +3,7 @@ node {
     withMaven(maven:'maven') {
 
         stage('Checkout') {
-            git url: 'https://github.com/saurabh0010/sample-spring-microservices.git'
+            git url: 'https://github.com/mattjamese/gateway-service.git'
         }
 
         stage('Build') {
@@ -15,16 +15,15 @@ node {
         }
 
         stage('Image') {
-            dir ('gateway-service') {
+            //dir ('gateway-service') {
                 def app = docker.build "localhost:5000/gateway-service:${env.version}"
                 app.push()
-            }
+            //}
         }
 
         stage ('Run') {
             docker.image("localhost:5000/gateway-service:${env.version}").run('-p 3333:3333 -h gateway --name gateway --link discovery --link account --link customer')
-        }
-     
+        }    
 
     }
 
