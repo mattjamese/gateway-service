@@ -14,7 +14,7 @@ node {
             env.version = pom.version
         }
         
-         /*stage('RemoveOldContainers'){	    
+         stage('RemoveOldContainers'){	    
     	    script {
 				  try {
 				      sh 'docker rm -f gateway'
@@ -23,7 +23,7 @@ node {
 				      build job: 'Image'
 				  }
 			}				     
-		}*/
+		}
 
         stage('Image') {
             //dir ('gateway-service') {
