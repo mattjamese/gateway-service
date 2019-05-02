@@ -13,17 +13,6 @@ node {
             print pom.version
             env.version = pom.version
         }
-        
-         /*stage('RemoveOldContainers'){	    
-    	    script {
-				  try {
-				      sh 'docker rm -f gateway'
-				  } catch (Exception e) {
-				     
-				      build job: 'Image'
-				  }
-			}				     
-		}*/
 
         stage('Image') {
             //dir ('gateway-service') {
@@ -33,7 +22,8 @@ node {
         }
 
         stage ('Run') {
-            docker.image("localhost:5000/gateway-service:${env.version}").run('-p 3333:3333 -h gateway --name gateway --link discovery --link account --link customer')
+            //docker.image("localhost:5000/gateway-service:${env.version}").run('-p 3333:3333 -h gateway --name gateway --link discovery --link account --link customer')
+            docker.image("localhost:5000/gateway-service:${env.version}").run('-p 3333:3333 -h gateway --name gateway')
         }    
 
     }

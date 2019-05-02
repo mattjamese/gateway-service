@@ -1,6 +1,5 @@
 FROM openjdk:8-jdk-alpine
 VOLUME /tmp
-ARG JAR_FILE
-COPY ${JAR_FILE} gateway-service.jar
-ENTRYPOINT ["java","-jar","/gateway-service.jar"]
+ADD target/gateway-service-0.1.jar gateway-service.jar
+ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar","/gateway-service.jar"]
 EXPOSE 8765

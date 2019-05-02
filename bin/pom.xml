@@ -10,8 +10,8 @@
 	</parent>
 	<groupId>pl.piomin.microservices.account</groupId>
 	<artifactId>gateway-service</artifactId>
-	<version>0.1T</version>
-	<name>gateway-service</name>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>account-service</name>
 	<description>Gateway Service</description>
 
 
